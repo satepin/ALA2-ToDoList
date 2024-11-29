@@ -1,5 +1,6 @@
 import {estados, dificultades} from '../task/mapas.js'
 import readlineSync from 'readline-sync';
+import { taskMake } from '../menus/taskMake.ts'
 
 export function taskDetail(task){
     let editar = '0';
@@ -18,7 +19,7 @@ export function taskDetail(task){
 
         console.log('\nSi deseas editarla, presiona E\nPresiona cualquier otra tecla para continuar... ')
         editar = readlineSync.question()
-        if(toLowerCase(editar) == 'e'){
+        if(editar.toLowerCase() == 'e'){
             taskMake(task);
         }
     }

@@ -9,9 +9,9 @@ import { isNewEmptyCheck, rangeCheck } from './check.js';
 export function taskMake(editTask) {
 
     let loop = true
-    let check = true;
+    let check : string;
     let menu = 6;
-    let newTask = null;
+    let newTask;
     let nuevaFlag;
     if (!editTask) {
         newTask = new task();
@@ -49,7 +49,7 @@ export function taskMake(editTask) {
                 break
             case 0: //guardar tarea
                 check = isNewEmptyCheck(newTask);
-                if (!check) {
+                if (check.length == 0) {
                     loop = false;
                     return newTask;
                 } else {

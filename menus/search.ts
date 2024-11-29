@@ -2,8 +2,10 @@ import readlineSync from 'readline-sync';
 
 export function searchTask(taskList, busqueda) {
     let i = 0;
-    let foundCount = 0;
-    let foundList = [];
+    let foundCount : number;
+    foundCount = 0;
+    let foundList : Array<any>;
+    foundList = new Array;
     for (i = 0; i < taskList.length; i++) {
         if (taskList[i].titulo.toLowerCase().includes(busqueda.toLowerCase())) {
             foundCount++;
@@ -17,7 +19,7 @@ export function searchTask(taskList, busqueda) {
 export function chooseEdit(foundList, foundCount) {
     if (foundCount != 0) {
         let i = readlineSync.question('\nDeseas ver los detalles de alguna?\nIntroduce el numero o 0 para volver\n...');
-        if (isNaN(i) || i == 0 || foundList[Math.floor(i).title == undefined]) { return false } else {
+        if (isNaN(i) || i == 0 || (foundList[ Math.floor(i) ].title == undefined)) { return false } else {
             return foundList[Math.floor(i)];
         }
     } else {

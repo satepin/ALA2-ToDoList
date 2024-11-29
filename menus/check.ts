@@ -5,7 +5,7 @@ export function isNewEmptyCheck(newTask){
     {
         return 'titulo';
     }
-    return false;
+    return '';
 }
 
 export function dateCheck(dateString){

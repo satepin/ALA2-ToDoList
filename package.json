@@ -13,5 +13,8 @@
   "dependencies": {
     "date-fns": "^4.1.0",
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "ts-node": "^10.9.2"
   }
 }

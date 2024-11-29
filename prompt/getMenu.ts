@@ -5,9 +5,9 @@ import { chooseEdit } from '../menus/search.js';
 export function viewTask(taskList) {
     let i = 0;
     let foundCount = 0;
-    let foundList = []
+    let foundList = Array;
     let filter = Number(readlineSync.question());
-    let filterType = null;
+    let filterType : String;
     switch (filter) {
         case 1:
             filterType = ':'

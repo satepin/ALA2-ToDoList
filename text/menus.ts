@@ -1,4 +1,7 @@
 import { viewTask } from '../prompt/getMenu.js';
+import readlineSync from 'readline-sync';
+import { taskDetail } from './taskDetail.js';
+import { searchTask } from '../menus/search.js'
 
 export function mainMenu() {
     console.log('\n¿Que deseas hacer?\n\n[1] Ver mis tareas\n[2] Buscar una tarea\n[3] Agregar una tarea\n[0] Salir\n...')
@@ -20,8 +23,8 @@ export function makeMenu(task, estados, dificultades, nueva) {
 }
 
 export function searchMenu(taskList) {
-    let busqueda = console.log('Introduce el titulo de una tarea para buscarla:\n >');
-    busqueda.splice(0, 100); //limita largo de string al mismo que los titulos poseen
+    let busqueda : string = readlineSync.question('Introduce el titulo de una tarea para buscarla:\n >');
+    busqueda.slice(0, 100); //limita largo de string al mismo que los titulos poseen
     taskDetail(searchTask(taskList, busqueda));
 }
 
