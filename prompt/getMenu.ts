@@ -1,11 +1,12 @@
-import readlineSync from 'readline-sync';
-import { menuWarning } from '../text/warning.js';
-import { chooseEdit } from '../menus/search.js';
+const readlineSync =  require ('readline-sync');
+const menuWarning = require('../text/warning.js');
+const chooseEdit = require('../menus/search.js');
+import { task } from '../task/task';
 
-export function viewTask(taskList) {
+export function viewTask(taskList : Array<task>) {
     let i = 0;
-    let foundCount = 0;
-    let foundList = Array;
+    let foundCount : number = 0;
+    let foundList = [];
     let filter = Number(readlineSync.question());
     let filterType : String;
     switch (filter) {

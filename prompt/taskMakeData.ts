@@ -1,9 +1,9 @@
-import readlineSync from 'readline-sync';
-import { menuWarning } from '../text/warning.js';
+var readlineSync = require("readline-sync");
+const menuWarning = require('../text/warning.ts')
 import { format, parse, getMilliseconds } from 'date-fns';
 import { dateCheck } from '../menus/check.js';
 
-export function taskMakeNumber(dataName, extraData) {
+export function taskMakeNumber(dataName : string, extraData : string) {
     let taskData = Number(readlineSync.question('\nIngrese ' + dataName + ' de la tarea ' + extraData + '\n'));
     if (isNaN(taskData)) {
         menuWarning(taskData);
@@ -12,13 +12,13 @@ export function taskMakeNumber(dataName, extraData) {
     return taskData;
 }
 
-export function taskMakeString(dataName, extraData, limit) {
+export function taskMakeString(dataName : string, extraData : string, limit: number) {
     let taskData = readlineSync.question('\nIngrese ' + dataName + ' de la tarea ' + extraData + '\n');
     taskData = taskData.slice(0, limit);
     return taskData.trimEnd();
 }
 
-export function taskSetDate(dataName, extraData, fechaCreacion) {
+export function taskSetDate(dataName : string, extraData : string, fechaCreacion : string) {
     let taskData = readlineSync.question('\nIngrese la fecha de ' + dataName + extraData + '\n');
     if (dateCheck(taskData)) {
         taskData = parse(taskData, 'yyyy-MM-dd', new Date());

@@ -1,6 +1,8 @@
 
-import * as dates from 'date-fns';
-export function isNewEmptyCheck(newTask){
+import { task } from '../task/task';
+const dates = require('date-fns');
+
+export function isNewEmptyCheck(newTask : task){
     if(newTask.titulo == "sin nombre" || newTask.titulo == "" || newTask.titulo == undefined || newTask.titulo == null)
     {
         return 'titulo';
@@ -8,7 +10,7 @@ export function isNewEmptyCheck(newTask){
     return '';
 }
 
-export function dateCheck(dateString){
+export function dateCheck(dateString : string){
     let result = dates.parseISO(dateString)
     if(isNaN(result.getTime())){
         return false;
@@ -17,8 +19,8 @@ export function dateCheck(dateString){
     }
 }
 
-export function rangeCheck(number, max){
-    if(!isNaN(number)){
+export function rangeCheck(number : number | undefined, max : number){
+    if(!(number === undefined)){
         number = Math.floor(number);
         return (number >= 1 && number <= max);
     }return false;

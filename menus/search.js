@@ -1,10 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.searchTask = searchTask;
+exports.chooseEdit = chooseEdit;
 var readlineSync = require("readline-sync");
-import { task } from '../task/task';
-export function searchTask(taskList: Array<task> | undefined, busqueda: string) {
-    let i = 0;
-    let foundCount: number;
+function searchTask(taskList, busqueda) {
+    var i = 0;
+    var foundCount;
     foundCount = 0;
-    let foundList: Array<task> = [];
+    var foundList = [];
     foundList = new Array;
     if (!(taskList === undefined)) {
         for (i = 0; i < taskList.length; i++) {
@@ -15,19 +18,22 @@ export function searchTask(taskList: Array<task> | undefined, busqueda: string) 
             }
         }
     }
-    let result = chooseEdit(foundList, foundCount);
+    var result = chooseEdit(foundList, foundCount);
     if (!(result === false)) {
         return result;
     }
 }
-
-export function chooseEdit(foundList: Array<task>, foundCount: number) {
+function chooseEdit(foundList, foundCount) {
     if (foundCount != 0) {
-        let i = Number(readlineSync.question('\nDeseas ver los detalles de alguna?\nIntroduce el numero o 0 para volver\n...'));
-        if (isNaN(i) || i == 0 || i < 1 || (foundList[Math.floor(i)].titulo == undefined || i > foundCount)) { return false } else {
+        var i = Number(readlineSync.question('\nDeseas ver los detalles de alguna?\nIntroduce el numero o 0 para volver\n...'));
+        if (isNaN(i) || i == 0 || i < 1 || (foundList[Math.floor(i)].titulo == undefined || i > foundCount)) {
+            return false;
+        }
+        else {
             return foundList[Math.floor(i)];
         }
-    } else {
+    }
+    else {
         console.log("No se han encontrado tareas con ese titulo");
     }
 }

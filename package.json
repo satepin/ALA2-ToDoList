@@ -1,6 +1,6 @@
 {
   "type": "module",
-  "name": "ala1-todolist",
+  "name": "ala2-todolist",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
@@ -15,6 +15,7 @@
     "readline-sync": "^1.4.10"
   },
   "devDependencies": {
-    "ts-node": "^10.9.2"
+    "ts-node": "^10.9.2",
+    "typescript": "^5.7.2"
   }
 }
