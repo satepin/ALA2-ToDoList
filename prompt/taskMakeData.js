@@ -5,13 +5,13 @@ exports.taskMakeString = taskMakeString;
 exports.taskSetDate = taskSetDate;
 exports.lastEditDate = lastEditDate;
 var readlineSync = require("readline-sync");
-var menuWarning = require('../text/warning.ts');
+var warning_js_1 = require("../text/warning.js");
 var date_fns_1 = require("date-fns");
 var check_js_1 = require("../menus/check.js");
 function taskMakeNumber(dataName, extraData) {
     var taskData = Number(readlineSync.question('\nIngrese ' + dataName + ' de la tarea ' + extraData + '\n'));
     if (isNaN(taskData)) {
-        menuWarning(taskData);
+        (0, warning_js_1.default)(taskData);
         return;
     }
     return taskData;
@@ -23,9 +23,10 @@ function taskMakeString(dataName, extraData, limit) {
 }
 function taskSetDate(dataName, extraData, fechaCreacion) {
     var taskData = readlineSync.question('\nIngrese la fecha de ' + dataName + extraData + '\n');
+    var newDate;
     if ((0, check_js_1.dateCheck)(taskData)) {
-        taskData = (0, date_fns_1.parse)(taskData, 'yyyy-MM-dd', new Date());
-        taskData = (0, date_fns_1.format)(taskData, 'yyyy/MM/dd');
+        newDate = (0, date_fns_1.parse)(taskData, 'yyyy-MM-dd', new Date());
+        taskData = (0, date_fns_1.format)(newDate, 'yyyy/MM/dd');
     }
     else {
         console.log('\nFecha Invalida\n');

@@ -1,6 +1,7 @@
-const readlineSync =  require ('readline-sync');
-const menuWarning = require('../text/warning.js');
-const chooseEdit = require('../menus/search.js');
+import readlineSync from 'readline-sync';
+import menuWarning from '../text/warning.js';
+import { chooseEdit } from '../menus/search.js';
+
 import { task } from '../task/task';
 
 export function viewTask(taskList : Array<task>) {

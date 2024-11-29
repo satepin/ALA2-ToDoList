@@ -1,6 +1,6 @@
-var readlineSync = require("readline-sync");
+import * as readlineSync from 'readline-sync';
 import { task } from '../task/task.js';
-import { menuWarning } from '../text/warning.js';
+import menuWarning from '../text/warning.js';
 import { makeMenu } from '../text/menus.js';
 import * as taskMakeData from '../prompt/taskMakeData.js';
 import * as mapas from '../task/mapas.js'
@@ -13,6 +13,7 @@ export function taskMake(editTask : task | boolean) {
     let menu = 6;
     let newTask : task;
     let nuevaFlag;
+    let fechaFlag;
     if (editTask == false || editTask == true) {
         newTask = new task();
         nuevaFlag = true;
@@ -46,7 +47,10 @@ export function taskMake(editTask : task | boolean) {
                 newTask.ultimaEdicion = taskMakeData.lastEditDate();
                 break;
             case 5: //vencimiento
-                newTask.vencimiento = taskMakeData.taskSetDate('vencimiento', ' (yyyy-mm-dd)', newTask.fechaCreacion);
+                fechaFlag = taskMakeData.taskSetDate('vencimiento', ' (yyyy-mm-dd)', newTask.fechaCreacion);
+                if(fechaFlag){
+                    newTask.vencimiento = fechaFlag;
+                }
                 newTask.ultimaEdicion = taskMakeData.lastEditDate();
                 break
             case 0: //guardar tarea

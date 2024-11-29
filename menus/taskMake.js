@@ -14,6 +14,7 @@ function taskMake(editTask) {
     var menu = 6;
     var newTask;
     var nuevaFlag;
+    var fechaFlag;
     if (editTask == false || editTask == true) {
         newTask = new task_js_1.task();
         nuevaFlag = true;
@@ -50,7 +51,10 @@ function taskMake(editTask) {
                 newTask.ultimaEdicion = taskMakeData.lastEditDate();
                 break;
             case 5: //vencimiento
-                newTask.vencimiento = taskMakeData.taskSetDate('vencimiento', ' (yyyy-mm-dd)', newTask.fechaCreacion);
+                fechaFlag = taskMakeData.taskSetDate('vencimiento', ' (yyyy-mm-dd)', newTask.fechaCreacion);
+                if (fechaFlag) {
+                    newTask.vencimiento = fechaFlag;
+                }
                 newTask.ultimaEdicion = taskMakeData.lastEditDate();
                 break;
             case 0: //guardar tarea
@@ -67,7 +71,7 @@ function taskMake(editTask) {
                 loop = false;
                 return false;
             default:
-                (0, warning_js_1.menuWarning)(menu);
+                (0, warning_js_1.default)(menu);
                 break;
         }
         menu = 6;

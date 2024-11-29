@@ -13,21 +13,24 @@ function searchTask(taskList, busqueda) {
         for (i = 0; i < taskList.length; i++) {
             if (taskList[i].titulo.toLowerCase().includes(busqueda.toLowerCase())) {
                 foundCount++;
-                foundList[foundCount] = taskList[i];
+                foundList.push(taskList[i]);
                 console.log('[' + foundCount + '] ' + taskList[i].titulo);
             }
         }
     }
     var result = chooseEdit(foundList, foundCount);
-    if (!(result === false)) {
+    if (!(result == null)) {
         return result;
+    }
+    else {
+        return null;
     }
 }
 function chooseEdit(foundList, foundCount) {
     if (foundCount != 0) {
         var i = Number(readlineSync.question('\nDeseas ver los detalles de alguna?\nIntroduce el numero o 0 para volver\n...'));
-        if (isNaN(i) || i == 0 || i < 1 || (foundList[Math.floor(i)].titulo == undefined || i > foundCount)) {
-            return false;
+        if (isNaN(i) || i == 0 || i < 1 || i > foundCount) {
+            return null;
         }
         else {
             return foundList[Math.floor(i)];
@@ -35,5 +38,6 @@ function chooseEdit(foundList, foundCount) {
     }
     else {
         console.log("No se han encontrado tareas con ese titulo");
+        return null;
     }
 }

@@ -3,7 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.isNewEmptyCheck = isNewEmptyCheck;
 exports.dateCheck = dateCheck;
 exports.rangeCheck = rangeCheck;
-var dates = require('date-fns');
+var dates = require("date-fns");
 function isNewEmptyCheck(newTask) {
     if (newTask.titulo == "sin nombre" || newTask.titulo == "" || newTask.titulo == undefined || newTask.titulo == null) {
         return 'titulo';
