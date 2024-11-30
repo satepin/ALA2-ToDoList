@@ -2,7 +2,7 @@ import readlineSync from 'readline-sync';
 import menuWarning from '../text/warning.js';
 import { chooseEdit } from '../menus/search.js';
 
-import { task } from '../task/task';
+import { task } from '../task/task.js';
 
 export function viewTask(taskList : Array<task>) {
     let i = 0;

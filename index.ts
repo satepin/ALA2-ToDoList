@@ -8,7 +8,6 @@ import { searchTask } from './menus/search.js';
 let menu = 0;
 let loop = true;
 let newTask;
-let searchFlag;
 const taskList = [];
 //preguntar nombre de usuario
 let username = readlineSync.question('\nCual es tu nombre?\n...');
@@ -26,14 +25,7 @@ do {
             }
             break;
         case 2:
-            searchFlag = searchTask(taskList, readlineSync.question('Ingrese el titulo de la tarea a buscar\n...'))
-            if(searchFlag!== null){
-                newTask = searchFlag;
-            }
-            if (newTask) {
-                taskMake(newTask);
-                newTask = null;
-            }
+            searchTask(taskList, readlineSync.question('Ingrese el titulo de la tarea a buscar\n...'))
             break;
         case 3:
             newTask = taskMake(false);

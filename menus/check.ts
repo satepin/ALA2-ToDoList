@@ -1,4 +1,4 @@
-import { task } from '../task/task';
+import { task } from '../task/task.js';
 import * as dates from 'date-fns';
 
 export function isNewEmptyCheck(newTask : task){

@@ -1,5 +1,6 @@
 import * as readlineSync from 'readline-sync';
 import { task } from '../task/task.js';
+import { taskDetail } from '../text/taskDetail.js';
 
 export function searchTask(taskList : any, busqueda: string) {
     let i = 0;
@@ -18,6 +19,7 @@ export function searchTask(taskList : any, busqueda: string) {
     }
     let result = chooseEdit(foundList, foundCount);
     if (!(result == null)) {
+        taskDetail(result);
         return result;
     } else {
         return null;
@@ -30,7 +32,7 @@ export function chooseEdit(foundList: Array<task>, foundCount: number) {
         if (isNaN(i) || i == 0 || i < 1 || i > foundCount) {
             return null;
         } else {
-            return foundList[Math.floor(i)];
+            return foundList[i-1];
         }
     } else {
         console.log("No se han encontrado tareas con ese titulo");

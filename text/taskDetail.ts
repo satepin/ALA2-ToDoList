@@ -1,11 +1,14 @@
 import {estados, dificultades} from '../task/mapas.js'
-var readlineSync = require("readline-sync");
-const taskMake = require('../menus/taskMake.ts');
-import { task } from '../task/task';
+import * as readlineSync from 'readline-sync';
+import { taskMake } from '../menus/taskMake.js'
 
-export function taskDetail(taskDetail : task | undefined){
+export function taskDetail(taskDetail : any){
+    try {
+    if (!taskDetail) {
+        console.log("Error: La tarea no existe o no ha sido seleccionada correctamente.");
+        return;
+    }
     let editar = '0';
-    if(!(taskDetail === undefined)){
         const taskEstado = estados.get(taskDetail.status);
         const taskDificultad = dificultades.get(taskDetail.dificultad)
         console.log('\nEsta es la tarea que elegiste\n\n');
@@ -17,11 +20,12 @@ export function taskDetail(taskDetail : task | undefined){
         console.log('Fecha de Creacion: ' + taskDetail.fechaCreacion);
 
         // edicion
-
-        console.log('\nSi deseas editarla, presiona E\nPresiona cualquier otra tecla para continuar... ')
-        editar = readlineSync.question()
+        process.stdout.write('');
+        editar = readlineSync.question('\nSi deseas editarla, presiona E\nPresiona cualquier otra tecla para continuar... ')
         if(editar.toLowerCase() == 'e'){
-            taskMake(taskDetail);
+            return taskMake(taskDetail);
         }
-    }
+    } catch (error) {
+            console.error("Error in taskDetail function:", error);
+        }
 }
