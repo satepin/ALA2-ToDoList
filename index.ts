@@ -18,11 +18,7 @@ do {
     menu = Number(readlineSync.question());
     switch (menu) {
         case 1:
-            newTask = viewMenu(taskList);
-            if (newTask) {
-                taskMake(newTask);
-                newTask = null;
-            }
+            viewMenu(taskList);
             break;
         case 2:
             searchTask(taskList, readlineSync.question('Ingrese el titulo de la tarea a buscar\n...'))

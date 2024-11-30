@@ -1,7 +1,7 @@
-import readlineSync from 'readline-sync';
+import * as readlineSync from 'readline-sync';
 import menuWarning from '../text/warning.js';
 import { chooseEdit } from '../menus/search.js';
-
+import { taskDetail } from '../text/taskDetail.js';
 import { task } from '../task/task.js';
 
 export function viewTask(taskList : Array<task>) {
@@ -33,10 +33,17 @@ export function viewTask(taskList : Array<task>) {
     for (i = 0; i < taskList.length; i++) {
         if (taskList[i].status == filter - 1 || filter == 1) {
             console.log('[' + (i + 1) + '] ' + taskList[i].titulo);
+            foundList.push(taskList[i]);
             foundCount++;
-            foundList[foundCount] = taskList[i];
+
         }
     }
-    return chooseEdit(foundList, foundCount);
+    let result = chooseEdit(foundList, foundCount);
+    if (!(result == null)) {
+        taskDetail(result);
+        return result;
+    } else {
+        return null;
+    }
 }
 
