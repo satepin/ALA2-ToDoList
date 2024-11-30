@@ -1,13 +1,13 @@
 "use strict";
-import readlineSync from 'readline-sync';
+import * as readlineSync from 'readline-sync';
 import { mainMenu, viewMenu } from './text/menus.js';
-import { menuWarning } from './text/warning.js';
+import menuWarning from './text/warning.js';
 import { taskMake } from './menus/taskMake.js';
 import { searchTask } from './menus/search.js';
 
 let menu = 0;
 let loop = true;
-let newTask = null;
+let newTask;
 const taskList = [];
 //preguntar nombre de usuario
 let username = readlineSync.question('\nCual es tu nombre?\n...');
@@ -18,18 +18,10 @@ do {
     menu = Number(readlineSync.question());
     switch (menu) {
         case 1:
-            newTask = viewMenu(taskList);
-            if (newTask) {
-                taskMake(newTask);
-                newTask = null;
-            }
+            viewMenu(taskList);
             break;
         case 2:
-            newTask = searchTask(taskList, readlineSync.question('Ingrese el titulo de la tarea a buscar\n...'))
-            if (newTask) {
-                taskMake(newTask);
-                newTask = null;
-            }
+            searchTask(taskList, readlineSync.question('Ingrese el titulo de la tarea a buscar\n...'))
             break;
         case 3:
             newTask = taskMake(false);

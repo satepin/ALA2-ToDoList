@@ -1,6 +1,5 @@
-
-import { task } from '../task/task';
-const dates = require('date-fns');
+import { task } from '../task/task.js';
+import * as dates from 'date-fns';
 
 export function isNewEmptyCheck(newTask : task){
     if(newTask.titulo == "sin nombre" || newTask.titulo == "" || newTask.titulo == undefined || newTask.titulo == null)

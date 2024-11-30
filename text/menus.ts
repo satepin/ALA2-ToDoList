@@ -1,5 +1,5 @@
-const viewTask = require('../prompt/getMenu.js')
-var readlineSync = require("readline-sync");
+import {viewTask} from '../prompt/getMenu.js';
+import * as readlineSync from 'readline-sync';
 import { taskDetail } from './taskDetail.js';
 import { searchTask } from '../menus/search.js'
 

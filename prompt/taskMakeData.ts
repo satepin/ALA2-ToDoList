@@ -1,5 +1,5 @@
-var readlineSync = require("readline-sync");
-const menuWarning = require('../text/warning.ts')
+import * as readlineSync from 'readline-sync';
+import menuWarning from '../text/warning.js';
 import { format, parse, getMilliseconds } from 'date-fns';
 import { dateCheck } from '../menus/check.js';
 
@@ -20,9 +20,10 @@ export function taskMakeString(dataName : string, extraData : string, limit: num
 
 export function taskSetDate(dataName : string, extraData : string, fechaCreacion : string) {
     let taskData = readlineSync.question('\nIngrese la fecha de ' + dataName + extraData + '\n');
+    let newDate : Date;
     if (dateCheck(taskData)) {
-        taskData = parse(taskData, 'yyyy-MM-dd', new Date());
-        taskData = format(taskData, 'yyyy/MM/dd');
+        newDate = parse(taskData, 'yyyy-MM-dd', new Date());
+        taskData = format(newDate, 'yyyy/MM/dd');
     } else {
         console.log('\nFecha Invalida\n')
         return null

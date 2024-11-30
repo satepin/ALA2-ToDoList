@@ -1,7 +1,8 @@
-const readlineSync =  require ('readline-sync');
-const menuWarning = require('../text/warning.js');
-const chooseEdit = require('../menus/search.js');
-import { task } from '../task/task';
+import * as readlineSync from 'readline-sync';
+import menuWarning from '../text/warning.js';
+import { chooseEdit } from '../menus/search.js';
+import { taskDetail } from '../text/taskDetail.js';
+import { task } from '../task/task.js';
 
 export function viewTask(taskList : Array<task>) {
     let i = 0;
@@ -32,10 +33,17 @@ export function viewTask(taskList : Array<task>) {
     for (i = 0; i < taskList.length; i++) {
         if (taskList[i].status == filter - 1 || filter == 1) {
             console.log('[' + (i + 1) + '] ' + taskList[i].titulo);
+            foundList.push(taskList[i]);
             foundCount++;
-            foundList[foundCount] = taskList[i];
+
         }
     }
-    return chooseEdit(foundList, foundCount);
+    let result = chooseEdit(foundList, foundCount);
+    if (!(result == null)) {
+        taskDetail(result);
+        return result;
+    } else {
+        return null;
+    }
 }
 
